@@ -18,3 +18,17 @@ service.listen({
     port: 12345,
     host: '0.0.0.0'
 });
+
+
+process.on('SIGINT', function() {
+	process.exit();
+});
+
+process.on('SIGTERM', function() {
+	process.exit();
+});
+
+process.on('exit', function() {
+    console.log('exit');
+	service.close();
+})
